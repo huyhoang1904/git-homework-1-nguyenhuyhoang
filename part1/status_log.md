@@ -47,3 +47,13 @@ However, -a doesn't work for new/untracked files. If draft.md were
 modified, -a would ignore it because Git has never tracked draft.md 
 before - new files must always be explicitly staged with 'git add'
 at least once before Git can track their changes.
+## Different between git fetch and git pull
+'git fetch origin' downloads new commits, branches, and data from the
+remote repository (GitHub) into the local remote-tracking branch
+(origin/main), but it doesn't change any files in the working directory
+or merge anything into the current branch. It only lets you see what 
+change on the remote before deciding what to do.
+'git pull origin main' is essentially 'git fetch' followed by 
+'git merge origin/main' - it downloads the new commits and immediately 
+merges them into the current local branch, updating the actual files
+in the working directory.
