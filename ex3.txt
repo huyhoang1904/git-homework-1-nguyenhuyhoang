@@ -1,0 +1,46 @@
+Part A
+1. mkdir ex3
+2. cd ex3
+3. mkdir dir1 dir2
+4. touch HelloWorld.txt
+   cp HelloWorld.txt dir1
+5. cp -i HelloWorld.txt dir1
+6. mv HelloWorld.txt Hi.txt
+7. mv Hi.txt dir2
+
+Part B
+1. ln dir2/Hi.txt Hi-hard
+   ln dir2/Hi.txt dir1/Hi-hard
+   ln dir2/Hi.txt dir2/Hi-hard
+2. ln -s dir2/Hi.txt Hi-sym
+3. rm Hi-hard
+4. rm dir2/Hi.txt 
+5. ls -li -R
+
+Part C
+1. ls /bin /usr/bin | sort | uniq | wc -l
+2. ls /bin /usr/bin | sort | uniq | grep zip
+3. printf "Day la dong so %s\n" {1..30} > myfile.txt
+   head -n 5 myfile.txt
+   tail -n 5 myfile.txt
+4. ls -l | tee full_listing.txt
+
+Part D
+1. mkdir permissions
+   cd permissions
+   touch secret.txt shared.txt public.txt
+2. chmod 600 secret.txt
+   chmod 664 shared.txt
+   chmod 777 public.txt
+3. umask
+   touch newfile.txt
+   ls -l newfile.txt
+   giải thích: 
+     lệnh umask kiểm soát và thiết lập quyền mặc định cho các tệp mới được tạo ra bằng cách loại bỏ các bit quyền
+     trong Linux, một tệp tin thông thường khi mới sinh ra (trước khi áp dụng umask) luôn có quyền gốc tối đa là rw-rw-rw- (tương đương với số octal là 0666)
+     khi tạo newfile.txt, hệ thống sẽ lấy quyền gốc này trừ đi giá trị umask
+     umask in ra 0002, mặt nạ sẽ che đi bit w của nhóm 'người khác'
+     kết quả newfile.txt sẽ có quyền là rw-rw-r-- (0664)
+   
+   
+  
